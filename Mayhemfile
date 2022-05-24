@@ -1,0 +1,7 @@
+project: rnshah9/libcpuid
+target: libcpuid
+tests: null
+
+cmds:
+  - cmd: /repo/cpuid_tool/.libs/cpuid_tool --load=/test
+    filepath: /test
