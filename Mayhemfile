@@ -1,5 +1,5 @@
 project: rnshah9/libcpuid
-target: libcpuid
+target: cpuid-tool
 tests: null
 
 cmds:
