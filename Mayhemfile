@@ -2,5 +2,5 @@ project: libcpuid
 target: cpuid-tool
 
 cmds:
-  - cmd: /repo/cpuid_tool/.libs/cpuid_tool --load=/test
+  - cmd: /cpuid_tool --load=/test
     filepath: /test

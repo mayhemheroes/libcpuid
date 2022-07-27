@@ -3,18 +3,13 @@ FROM --platform=linux/amd64 ubuntu:20.04 as builder
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y automake pkg-config libtool build-essential
 
-ADD . /repo
+COPY . /repo
 WORKDIR /repo
 RUN autoreconf -if
 RUN ./configure
 RUN make -j8
-ENV LD_LIBRARY_PATH=/repo/libcpuid/.libs
-
-RUN mkdir -p /deps
-RUN ldd /repo/cpuid_tool/.libs/cpuid_tool | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
 
 FROM ubuntu:20.04 as package
-
-COPY --from=builder /deps /deps
-COPY --from=builder /repo/cpuid_tool/.libs/cpuid_tool /repo/cpuid_tool/.libs/cpuid_tool
-ENV LD_LIBRARY_PATH=/deps
+COPY --from=builder /repo/cpuid_tool/.libs/cpuid_tool /
+COPY --from=builder /repo/libcpuid/.libs /lib
+ENV LD_LIBRARY_PATH=/lib
