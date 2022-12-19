@@ -59,7 +59,8 @@ jobs:
       fail-fast: false
       matrix:
         mayhemfile:
-          - mayhem/Mayhemfile
+          - mayhem/Mayhemfile_match_pattern
+          - mayhem/Mayhemfile_cpuid_tool
 
     steps:
       - uses: actions/checkout@v3
