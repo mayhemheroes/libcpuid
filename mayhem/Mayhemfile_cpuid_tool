@@ -1,0 +1,6 @@
+project: libcpuid
+target: cpuid-tool
+
+cmds:
+  - cmd: /cpuid_tool --load=/test
+    filepath: /test

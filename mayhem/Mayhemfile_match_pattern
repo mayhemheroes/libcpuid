@@ -1,0 +1,6 @@
+project: libcpuid
+target: match-pattern
+
+cmds:
+  - cmd: /fuzz_match_pattern
+    libfuzzer: true
